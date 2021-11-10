@@ -1,0 +1,15 @@
+from selenium import webdriver
+import warnings
+warnings.filterwarnings("ignore", category=FutureWarning)
+driver = webdriver.Chrome()
+driver.get("https://linkedin.com")
+driver.find_element_by_xpath('//*[@id="session_key"]').send_keys("19i201@psgtech.ac.in")
+driver.find_element_by_xpath('//*[@id="session_password"]').send_keys("PYKVC@2331")
+driver.find_element_by_xpath('//*[@id="main-content"]/section[1]/div/div/form/button').click()
+driver.implicitly_wait(10)
+try:
+   x=driver.find_element_by_xpath('//*[@id="error-for-password"]')
+   if x :
+       print("Invalid credentials,try again")
+except:
+   print("Login success")
